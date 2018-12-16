@@ -55,15 +55,15 @@ noteGenerator(notes, "show-notes");
 //Delete note
 
 let deleteNote = function() {
-  let listDeleteItems = document.querySelectorAll(".delete");
-  for (let i = 0; i < listDeleteItems.length; i++) {
-    listDeleteItems[i].addEventListener("click", function() {
-      console.log("deletNote", event);
+  var listItems = document.querySelectorAll(".delete");
+  for (let i = 0; i < listItems.length; i++) {
+    listItems[i].addEventListener("click", function() {
       let searchId = event.target.id.slice(6);
       for (let i = 0; i < notes.length; i++) {
         if (notes[i].id == searchId) {
-          notes.splice(notes[i], 1);
-          saveNotes(notes);
+          notes.splice(i, 1);
+          localStorage.setItem("notes", JSON.stringify(notes));
+          location.reload();
         }
       }
     });
