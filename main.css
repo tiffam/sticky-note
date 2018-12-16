@@ -1,0 +1,59 @@
+body {
+  margin: 0;
+  padding: 0;
+  display: relative;
+  font-family: "Open Sans", sans-serif;
+}
+
+nav {
+  background-color: white;
+  opacity: 0.9;
+  padding: 10px;
+}
+
+li {
+  list-style: none;
+  display: inline;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+.brand {
+  font-weight: 800;
+  margin-right: 50px;
+}
+
+#new-note {
+  text-align: center;
+}
+
+#new-note input {
+  display: block;
+  margin: 0 auto;
+}
+
+input {
+  font-size: 1em;
+  padding: 5px;
+  width: 250px;
+}
+
+button {
+  padding: 10px;
+  margin: 5px;
+}
+
+#note {
+  height: 100px;
+}
+
+#new-note {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  width: 300px;
+  height: 250px;
+  margin: 0 auto;
+  padding: 5px 0;
+}
