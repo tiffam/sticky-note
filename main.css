@@ -30,12 +30,12 @@ a {
 #new-note input {
   display: block;
   margin: 0 auto;
+  width: 250px;
 }
 
 input {
   font-size: 1em;
   padding: 5px;
-  width: 250px;
 }
 
 button {
