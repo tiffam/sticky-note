@@ -87,3 +87,7 @@ button {
   float: right;
   padding: 5px;
 }
+
+.wrapper {
+  padding: 10px;
+}
