@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="main.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans"
+      rel="stylesheet"
+    />
+    <title>Sticky Notes</title>
+  </head>
+  <body>
+
+    <nav>
+      <ul>
+        <li class="brand">
+          <a href="index.html"></a>Sticky Notes</a>
+        </li>
+        <li>
+          <input id="search" class="search" type="text" placeholder="Search" />
+          <button id="search-button">Search</button>
+        </li>
+      </ul>
+    </nav>
+
+    <div id="new-note">
+      <input id="title" placeholder="Title" type="text" />
+      <input id="note" placeholder="Note" type="text" />
+      <button class="primary-btn">Cancel</button>
+      <button id="submit" class="primary-btn">Submit</button>
+    </div>
+
+    <div id="show-notes"></div>
+    <div id="show-search"></div>
+
+    <script src="main.js"></script>
+
+  </body>
+</html>
