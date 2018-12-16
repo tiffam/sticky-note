@@ -8,10 +8,8 @@ let noteId = localStorage.getItem("noteId")
   : 0;
 
 // when user click on submit button, the inputs will be saved into local storage and browser refreshes
-document.getElementById("submit").addEventListener("click", function() {
-  console.log("test");
+document.getElementById("submit").addEventListener("click", () => {
   if (document.getElementById("note").value !== "") {
-    console.log("test3");
     noteId++;
     notes.push({
       id: noteId,
@@ -21,17 +19,17 @@ document.getElementById("submit").addEventListener("click", function() {
     localStorage.setItem("noteId", JSON.stringify(noteId));
     saveNotes(notes);
   }
-  console.log("test5");
 });
 
 //create and display notes from notes array
-let noteGenerator = function(notes, idName) {
+let noteGenerator = (notes, idName) => {
   for (let i = 0; i < notes.length; i++) {
     let div = document.createElement("div");
     let iconDelete = document.createElement("i");
     let iconSave = document.createElement("i");
     let h5 = document.createElement("h5");
     let para = document.createElement("p");
+
     div.setAttribute("class", "note");
     h5.setAttribute("contenteditable", "true");
     para.setAttribute("contenteditable", "true");
@@ -39,6 +37,7 @@ let noteGenerator = function(notes, idName) {
     iconDelete.setAttribute("id", "delete" + notes[i].id);
     iconSave.setAttribute("class", "save fas fa-save");
     iconSave.setAttribute("id", "save" + notes[i].id);
+
     h5.textContent = notes[i].title;
     para.textContent = notes[i].note;
 
@@ -56,7 +55,7 @@ noteGenerator(notes, "show-notes");
 //Delete note
 var listDeleteItems = document.querySelectorAll(".delete");
 for (let i = 0; i < listDeleteItems.length; i++) {
-  listDeleteItems[i].addEventListener("click", function() {
+  listDeleteItems[i].addEventListener("click", () => {
     let searchId = event.target.id.slice(6);
     for (let i = 0; i < notes.length; i++) {
       if (notes[i].id == searchId) {
@@ -70,7 +69,7 @@ for (let i = 0; i < listDeleteItems.length; i++) {
 //Edit note
 var listEditItems = document.querySelectorAll(".save");
 for (let i = 0; i < listEditItems.length; i++) {
-  listEditItems[i].addEventListener("click", function() {
+  listEditItems[i].addEventListener("click", () => {
     let searchId = event.target.id.slice(4);
     for (let i = 0; i < notes.length; i++) {
       if (notes[i].id == searchId) {
@@ -83,14 +82,15 @@ for (let i = 0; i < listEditItems.length; i++) {
   });
 }
 
-let saveNotes = function(editedNotes) {
+let saveNotes = editedNotes => {
   localStorage.setItem("notes", JSON.stringify(editedNotes));
   location.reload();
 };
 
 //search note and display search results
-document.getElementById("search-button").addEventListener("click", function() {
+document.getElementById("search-button").addEventListener("click", () => {
   let searchTerm = document.getElementById("search").value;
+  //search only when search input is not an empty string
   if (searchTerm !== "") {
     let searchTerm = document.getElementById("search").value;
     let searchResults = notes.filter(note => !note.title.indexOf(searchTerm));
