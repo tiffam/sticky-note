@@ -9,14 +9,19 @@ let noteId = localStorage.getItem("noteId")
 
 // when user click on submit button, the inputs will be saved into local storage and browser refreshes
 document.getElementById("submit").addEventListener("click", function() {
-  noteId++;
-  notes.push({
-    id: noteId,
-    title: document.getElementById("title").value,
-    note: document.getElementById("note").value
-  });
-  localStorage.setItem("noteId", JSON.stringify(noteId));
-  saveNotes(notes);
+  console.log("test");
+  if (document.getElementById("note").value !== "") {
+    console.log("test3");
+    noteId++;
+    notes.push({
+      id: noteId,
+      title: document.getElementById("title").value,
+      note: document.getElementById("note").value
+    });
+    localStorage.setItem("noteId", JSON.stringify(noteId));
+    saveNotes(notes);
+  }
+  console.log("test5");
 });
 
 //create and display notes from notes array
@@ -82,3 +87,25 @@ let saveNotes = function(editedNotes) {
   localStorage.setItem("notes", JSON.stringify(editedNotes));
   location.reload();
 };
+
+//search note and display search results
+document.getElementById("search-button").addEventListener("click", function() {
+  let searchTerm = document.getElementById("search").value;
+  if (searchTerm !== "") {
+    let searchTerm = document.getElementById("search").value;
+    let searchResults = notes.filter(note => !note.title.indexOf(searchTerm));
+    let div = document.createElement("div");
+    if (searchResults.length - 1 < 0) {
+      div.textContent = "No matching note for " + searchTerm;
+      document.getElementById("show-search").appendChild(div);
+    } else {
+      div.textContent = "Search Results for " + searchTerm;
+      document.getElementById("show-search").appendChild(div);
+      noteGenerator(searchResults, "show-search");
+    }
+    document.getElementById("new-note").classList.toggle("invisible");
+    document.getElementById("show-notes").classList.toggle("invisible");
+    document.getElementById("search").classList.toggle("invisible");
+    document.getElementById("search-button").classList.toggle("invisible");
+  }
+});
