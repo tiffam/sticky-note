@@ -13,7 +13,7 @@ document.getElementById("submit").addEventListener("click", function() {
     noteId++;
     notes.push({
       id: noteId,
-      title: document.getElementById("title").value,
+      title: document.getElementById("title").value.toLowerCase(),
       note: document.getElementById("note").value
     });
     localStorage.setItem("noteId", JSON.stringify(noteId));
@@ -38,7 +38,7 @@ let noteGenerator = function(notes, idName) {
     iconSave.setAttribute("class", "save fas fa-save");
     iconSave.setAttribute("id", "save" + notes[i].id);
 
-    h5.textContent = notes[i].title;
+    h5.textContent = notes[i].title.toUpperCase();
     para.textContent = notes[i].note;
 
     div.appendChild(iconDelete);
@@ -102,7 +102,7 @@ document.getElementById("search-button").addEventListener("click", function() {
   let searchTerm = document.getElementById("search").value;
   //search only when search input is not an empty string
   if (searchTerm !== "") {
-    let searchTerm = document.getElementById("search").value;
+    let searchTerm = document.getElementById("search").value.toLowerCase();
     let searchResults = notes.filter(function(note) {
       return !note.title.indexOf(searchTerm);
     });
