@@ -57,3 +57,33 @@ button {
   margin: 0 auto;
   padding: 5px 0;
 }
+
+#show-notes {
+  margin: 50px;
+  text-align: center;
+}
+
+.note {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  width: 200px;
+  height: 200px;
+  display: inline-block;
+  margin: 10px;
+  background-color: rgb(245, 244, 179);
+  padding: 0 10px;
+}
+
+.note:hover {
+  background-color: pink;
+}
+
+.note h5,
+.note p {
+  overflow: scroll;
+}
+
+.fas,
+.far {
+  float: right;
+  padding: 5px;
+}
