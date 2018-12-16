@@ -91,3 +91,7 @@ button {
 .wrapper {
   padding: 10px;
 }
+
+.invisible {
+  display: none;
+}
