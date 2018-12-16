@@ -24,6 +24,8 @@ In your CLI, run
 
 `open index.html`
 
+If you are using Safari, you will need to set "Disable local file restrictions" in the Develop menu.
+
 ### Built With
 
 - HTML
