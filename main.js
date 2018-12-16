@@ -15,13 +15,12 @@ document.getElementById("submit").addEventListener("click", function() {
     title: document.getElementById("title").value,
     note: document.getElementById("note").value
   });
-  localStorage.setItem("notes", JSON.stringify(notes));
   localStorage.setItem("noteId", JSON.stringify(noteId));
-  console.log(notes);
+  saveNotes(notes);
 });
 
 //create and display notes from notes array
-let displayNotes = function(notes, idName) {
+let noteGenerator = function(notes, idName) {
   for (let i = 0; i < notes.length; i++) {
     let div = document.createElement("div");
     let iconDelete = document.createElement("i");
@@ -47,4 +46,39 @@ let displayNotes = function(notes, idName) {
 };
 
 //to execute the code to display notes
-displayNotes(notes, "show-notes");
+noteGenerator(notes, "show-notes");
+
+//Delete note
+var listDeleteItems = document.querySelectorAll(".delete");
+for (let i = 0; i < listDeleteItems.length; i++) {
+  listDeleteItems[i].addEventListener("click", function() {
+    let searchId = event.target.id.slice(6);
+    for (let i = 0; i < notes.length; i++) {
+      if (notes[i].id == searchId) {
+        notes.splice(notes[i], 1);
+        saveNotes(notes);
+      }
+    }
+  });
+}
+
+//Edit note
+var listEditItems = document.querySelectorAll(".save");
+for (let i = 0; i < listEditItems.length; i++) {
+  listEditItems[i].addEventListener("click", function() {
+    let searchId = event.target.id.slice(4);
+    for (let i = 0; i < notes.length; i++) {
+      if (notes[i].id == searchId) {
+        notes[i].title = event.target.nextSibling.innerHTML;
+        notes[i].note = event.target.nextSibling.nextSibling.innerHTML;
+        localStorage.setItem("notes", JSON.stringify(notes));
+        saveNotes(notes);
+      }
+    }
+  });
+}
+
+let saveNotes = function(editedNotes) {
+  localStorage.setItem("notes", JSON.stringify(editedNotes));
+  location.reload();
+};
