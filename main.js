@@ -8,7 +8,7 @@ let noteId = localStorage.getItem("noteId")
   : 0;
 
 // when user click on submit button, the inputs will be saved into local storage and browser refreshes
-document.getElementById("submit").addEventListener("click", () => {
+document.getElementById("submit").addEventListener("click", function() {
   if (document.getElementById("note").value !== "") {
     noteId++;
     notes.push({
@@ -22,7 +22,7 @@ document.getElementById("submit").addEventListener("click", () => {
 });
 
 //create and display notes from notes array
-let noteGenerator = (notes, idName) => {
+let noteGenerator = function(notes, idName) {
   for (let i = 0; i < notes.length; i++) {
     let div = document.createElement("div");
     let iconDelete = document.createElement("i");
@@ -55,7 +55,7 @@ noteGenerator(notes, "show-notes");
 //Delete note
 var listDeleteItems = document.querySelectorAll(".delete");
 for (let i = 0; i < listDeleteItems.length; i++) {
-  listDeleteItems[i].addEventListener("click", () => {
+  listDeleteItems[i].addEventListener("click", function() {
     let searchId = event.target.id.slice(6);
     for (let i = 0; i < notes.length; i++) {
       if (notes[i].id == searchId) {
@@ -69,7 +69,7 @@ for (let i = 0; i < listDeleteItems.length; i++) {
 //Edit note
 var listEditItems = document.querySelectorAll(".save");
 for (let i = 0; i < listEditItems.length; i++) {
-  listEditItems[i].addEventListener("click", () => {
+  listEditItems[i].addEventListener("click", function() {
     let searchId = event.target.id.slice(4);
     for (let i = 0; i < notes.length; i++) {
       if (notes[i].id == searchId) {
@@ -82,13 +82,13 @@ for (let i = 0; i < listEditItems.length; i++) {
   });
 }
 
-let saveNotes = editedNotes => {
+let saveNotes = function(editedNotes) {
   localStorage.setItem("notes", JSON.stringify(editedNotes));
   location.reload();
 };
 
 //search note and display search results
-document.getElementById("search-button").addEventListener("click", () => {
+document.getElementById("search-button").addEventListener("click", function() {
   let searchTerm = document.getElementById("search").value;
   //search only when search input is not an empty string
   if (searchTerm !== "") {
