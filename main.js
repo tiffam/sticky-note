@@ -93,7 +93,9 @@ document.getElementById("search-button").addEventListener("click", function() {
   //search only when search input is not an empty string
   if (searchTerm !== "") {
     let searchTerm = document.getElementById("search").value;
-    let searchResults = notes.filter(note => !note.title.indexOf(searchTerm));
+    let searchResults = notes.filter(function(note) {
+      return !note.title.indexOf(searchTerm);
+    });
     let div = document.createElement("div");
     if (searchResults.length - 1 < 0) {
       div.textContent = "No matching note for " + searchTerm;
