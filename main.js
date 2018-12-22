@@ -41,10 +41,10 @@ let noteGenerator = function(notes, idName) {
     h5.textContent = notes[i].title.toUpperCase();
     para.textContent = notes[i].note;
 
-    div.appendChild(iconDelete);
-    div.appendChild(iconSave);
     div.appendChild(h5);
     div.appendChild(para);
+    div.appendChild(iconDelete);
+    div.appendChild(iconSave);
     document.getElementById(idName).appendChild(div);
   }
 };
