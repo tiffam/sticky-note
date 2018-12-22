@@ -77,7 +77,15 @@ button {
 
 .note h5,
 .note p {
-  overflow: scroll;
+  overflow: auto;
+}
+
+.note h5 {
+  height: 30px;
+}
+
+.note p {
+  height: 80px;
 }
 
 .fas,
